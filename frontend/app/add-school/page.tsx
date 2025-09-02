@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-
+import Image from "next/image"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { Button } from "@/components/ui/button"
@@ -37,8 +37,6 @@ export default function AddSchoolPage() {
     reset,
     watch,
   } = useForm<SchoolFormData>()
-
-  const watchedImage = watch("image")
 
   // Handle image preview
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -267,11 +265,13 @@ export default function AddSchoolPage() {
                       />
                     </div>
                     {imagePreview && (
-                      <div className="w-16 h-16 rounded-lg overflow-hidden border-2 border-gray-200">
-                        <img
-                          src={imagePreview || "/placeholder.svg"}
+                      <div className="relative w-16 h-16 rounded-lg overflow-hidden border-2 border-gray-200">
+                        <Image
+                          src={imagePreview}
                           alt="Preview"
-                          className="w-full h-full object-cover"
+                          fill
+                          className="object-cover"
+                          sizes="64px"
                         />
                       </div>
                     )}

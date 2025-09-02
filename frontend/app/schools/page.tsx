@@ -210,7 +210,7 @@ export default function ShowSchoolsPage() {
                 <Database className="w-16 h-16 text-amber-500 mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-gray-900 mb-2">Database Setup Required</h3>
                 <p className="text-gray-600 mb-4">
-                  The schools table doesn't exist in your database. You need to run the setup SQL commands first.
+                  The schools table doesn&apos;t exist in your database. You need to run the setup SQL commands first.
                 </p>
                 <div className="space-y-2">
                   <Link href="/setup">

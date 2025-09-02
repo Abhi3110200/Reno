@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -95,11 +96,16 @@ export default function ShowSchoolsPage() {
     <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
       <CardHeader className="p-0">
         <div className="relative overflow-hidden rounded-t-lg">
-          <img
-            src={school.image_path || "/placeholder.svg?height=200&width=300&query=school building"}
-            alt={school.school_name}
-            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-          />
+          <div className="relative w-full h-48">
+            <Image
+              src={school.image_path || "/placeholder.svg?height=200&width=300&query=school%20building"}
+              alt={school.school_name}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority={false}
+            />
+          </div>
           <div className="absolute top-3 right-3">
             <Badge variant="secondary" className="bg-white/90 text-gray-700">
               {school.city}
@@ -147,11 +153,16 @@ export default function ShowSchoolsPage() {
     <Card className="hover:shadow-md transition-shadow">
       <CardContent className="p-4">
         <div className="flex gap-4">
-          <img
-            src={school.image_path || "/placeholder.svg?height=80&width=120&query=school building"}
-            alt={school.school_name}
-            className="w-24 h-16 object-cover rounded-lg flex-shrink-0"
-          />
+          <div className="relative w-24 h-16 flex-shrink-0">
+            <Image
+              src={school.image_path || "/placeholder.svg?height=80&width=120&query=school%20building"}
+              alt={school.school_name}
+              fill
+              className="object-cover rounded-lg"
+              sizes="96px"
+              priority={false}
+            />
+          </div>
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between">
               <div className="flex-1">

@@ -58,13 +58,13 @@ export async function POST(request: NextRequest) {
     }
 
     // Insert into database
-    const [result] = await pool.execute(
+    const [result] = await pool.execute<import('mysql2').ResultSetHeader>(
       `INSERT INTO schools (school_name, email, phone, address, city, state, pincode, image_path) 
        VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [name, email, phone, address, city, state, pincode, imagePath],
     )
 
-    return NextResponse.json({ message: "School added successfully", id: (result as any).insertId }, { status: 201 })
+    return NextResponse.json({ message: "School added successfully", id: result.insertId }, { status: 201 })
   } catch (error) {
     console.error("Database error:", error)
     return NextResponse.json({ error: "Failed to add school" }, { status: 500 })
